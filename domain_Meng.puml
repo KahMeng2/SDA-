@@ -1,0 +1,95 @@
+@startuml
+Student "1" -- "1..*" Admin : is an >
+Admin "1..*" -- "1" Club : admin of >
+Club "1" -- "1..*" FundingApplication : Creates >
+facultyMember -- FundingApplication : Checks >
+Club "1" -- "0..*" Event : Hosts >
+Event -- Venue : Hosted at >
+Student "1" -- "1" RSVP : Creates >
+RSVP "1" -- "1" Event : Is for >
+Event -- Status : Currently at 
+User -- Student : is a 
+User -- facultyMember : is a 
+
+class User {
+    ID 
+    email
+    username 
+    password 
+    firstname 
+    lastname 
+    preferredName 
+    DOB 
+    address 
+}
+
+class Student {
+    studentID
+    course 
+}
+
+class facultyMember {
+    facultyID
+    role 
+    department 
+    salary
+}
+
+class Event {
+    eventID
+    title 
+    description 
+    date
+    time
+    requiredCapacity 
+}
+
+class Venue {
+    venueID
+    maxCapacity
+    operatingHours 
+    cost 
+    floor
+    room
+    description
+}
+
+class Club {
+    clubID
+    name
+    balance 
+    admins
+}
+
+
+class FundingApplication {
+    fundID
+    description
+    amountRequested 
+    status 
+}
+
+enum Status {
+    InDraft
+    Submitted 
+    InReview 
+    Approved
+    Rejected
+}
+
+class RSVP {
+    date
+    studentID
+    eventID
+    RSVPBy
+}
+
+class Admin {
+    studentID
+    clubID 
+    startDate
+}
+
+
+
+@enduml

@@ -15,6 +15,7 @@ public class TestResource extends HttpServlet {
     private static final String PROPERTY_JDBC_USERNAME = "jdbc.username";
     private static final String PROPERTY_JDBC_PASSWORD = "jdbc.password";
     private static final String SQL_GET_TEST = "SELECT * FROM app.test;";
+    private static final String SQL_INSERT_TEST = "INSERT INTO app.test (test_value) VALUES (?);";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,14 +25,53 @@ public class TestResource extends HttpServlet {
                 System.getProperty(PROPERTY_JDBC_USERNAME),
                 System.getProperty(PROPERTY_JDBC_PASSWORD)))
         {
-            try (PreparedStatement statement =  connection.prepareStatement(SQL_GET_TEST)) {
+            try (PreparedStatement statement = connection.prepareStatement(SQL_GET_TEST)) {
                 ResultSet results = statement.executeQuery();
-                results.next();
-                resp.getWriter().println(results.getString("test_value"));
+                if (results.next()) {
+                    resp.getWriter().println(results.getString("test_value"));
+                } else {
+                    resp.getWriter().println("No data found.");
+                }
             }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Get the value from the request body
+        String testValue = req.getParameter("test_value");
+
+        if (testValue == null || testValue.trim().isEmpty()) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().println("Missing 'test_value' parameter.");
+            return;
+        }
+
+        // Open a connection and insert the new row into the 'test' table
+        try (Connection connection = DriverManager.getConnection(
+                System.getProperty(PROPERTY_JDBC_URI),
+                System.getProperty(PROPERTY_JDBC_USERNAME),
+                System.getProperty(PROPERTY_JDBC_PASSWORD)))
+        {
+            try (PreparedStatement statement = connection.prepareStatement(SQL_INSERT_TEST)) {
+                statement.setString(1, testValue);
+                int rowsInserted = statement.executeUpdate();
+
+                if (rowsInserted > 0) {
+                    resp.setStatus(HttpServletResponse.SC_CREATED);
+                    resp.getWriter().println("Data inserted successfully.");
+                } else {
+                    resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    resp.getWriter().println("Failed to insert data.");
+                }
+            }
+
+        } catch (SQLException e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            resp.getWriter().println("Database error: " + e.getMessage());
         }
     }
 

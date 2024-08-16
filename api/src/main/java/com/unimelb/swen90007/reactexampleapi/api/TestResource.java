@@ -19,7 +19,7 @@ public class TestResource extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // open a connection and fetch the row from the 'test' table and return
+        // open a connection and fetch the rows from the 'test' table and return
         try (Connection connection = DriverManager.getConnection(
                 System.getProperty(PROPERTY_JDBC_URI),
                 System.getProperty(PROPERTY_JDBC_USERNAME),
@@ -27,9 +27,13 @@ public class TestResource extends HttpServlet {
         {
             try (PreparedStatement statement = connection.prepareStatement(SQL_GET_TEST)) {
                 ResultSet results = statement.executeQuery();
-                if (results.next()) {
+                boolean dataFound = false;
+                while (results.next()) {
+                    // Print each row's 'test_value' field to the response
                     resp.getWriter().println(results.getString("test_value"));
-                } else {
+                    dataFound = true;
+                }
+                if (!dataFound) {
                     resp.getWriter().println("No data found.");
                 }
             }
@@ -41,16 +45,16 @@ public class TestResource extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Get the value from the request body
+        // Read the test_value parameter from the request
         String testValue = req.getParameter("test_value");
 
-        if (testValue == null || testValue.trim().isEmpty()) {
+        if (testValue == null || testValue.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().println("Missing 'test_value' parameter.");
+            resp.getWriter().println("Missing or empty 'test_value' parameter.");
             return;
         }
 
-        // Open a connection and insert the new row into the 'test' table
+        // Insert the new value into the 'test' table
         try (Connection connection = DriverManager.getConnection(
                 System.getProperty(PROPERTY_JDBC_URI),
                 System.getProperty(PROPERTY_JDBC_USERNAME),
@@ -58,9 +62,9 @@ public class TestResource extends HttpServlet {
         {
             try (PreparedStatement statement = connection.prepareStatement(SQL_INSERT_TEST)) {
                 statement.setString(1, testValue);
-                int rowsInserted = statement.executeUpdate();
+                int rowsAffected = statement.executeUpdate();
 
-                if (rowsInserted > 0) {
+                if (rowsAffected > 0) {
                     resp.setStatus(HttpServletResponse.SC_CREATED);
                     resp.getWriter().println("Data inserted successfully.");
                 } else {
@@ -70,8 +74,7 @@ public class TestResource extends HttpServlet {
             }
 
         } catch (SQLException e) {
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().println("Database error: " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

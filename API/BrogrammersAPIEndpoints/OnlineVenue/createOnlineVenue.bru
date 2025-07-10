@@ -1,0 +1,20 @@
+meta {
+  name: createOnlineVenue
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/onlinevenues
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "Melbourne Connect",
+    "cost": "100000.99",
+    "venueCapacity": "500",
+    "link": "https://zoom.us/j/1234567890"
+  }
+}

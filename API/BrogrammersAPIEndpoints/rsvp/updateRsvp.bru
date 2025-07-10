@@ -1,0 +1,24 @@
+meta {
+  name: updateRsvp
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{base_url}}/rsvps
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "rsvpStudentId": "31",
+    "eventId": "2",
+    "tickets": [
+      {
+        "ticketStudentId": "31",
+        "specialPreferences": "extra cheese"
+      }
+    ]
+  }
+}

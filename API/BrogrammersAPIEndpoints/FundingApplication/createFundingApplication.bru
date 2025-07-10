@@ -1,0 +1,21 @@
+meta {
+  name: createFundingApplication
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/funding_application
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "clubId": "34",
+      "description": "Funding for new computers",
+      "amount": "8000.00",
+      "semester": "1",
+      "year": "2026"
+  }
+}

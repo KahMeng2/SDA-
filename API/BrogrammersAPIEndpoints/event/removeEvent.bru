@@ -1,0 +1,15 @@
+meta {
+  name: removeEvent
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{base_url}}/events/cancel?eventId=31
+  body: none
+  auth: inherit
+}
+
+params:query {
+  eventId: 31
+}

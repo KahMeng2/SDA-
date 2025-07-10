@@ -1,0 +1,19 @@
+meta {
+  name: makeAdmin
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/students/makeAdmin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "clubId": "34",
+    "existingAdminId": "33", 
+    "newAdminId": "2"
+  }
+}

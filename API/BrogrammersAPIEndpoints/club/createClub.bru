@@ -1,0 +1,23 @@
+meta {
+  name: createClub
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/clubs
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Fight Club V",
+    "adminId": "31",
+    "balance": "200.24"
+  }
+}

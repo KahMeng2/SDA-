@@ -1,0 +1,15 @@
+meta {
+  name: deletePhysicalVenue
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{base_url}}/physicalvenues/
+  body: json
+  auth: none
+}
+
+body:json {
+  {"venueId": "35"}
+}

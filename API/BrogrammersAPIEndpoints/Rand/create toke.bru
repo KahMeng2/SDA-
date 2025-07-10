@@ -1,0 +1,19 @@
+meta {
+  name: create toke
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://localhost:7122/Token
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userid": "meng",
+    "email": "email",
+    "role": "User"
+  }
+}

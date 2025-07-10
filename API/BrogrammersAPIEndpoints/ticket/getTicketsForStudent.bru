@@ -1,0 +1,15 @@
+meta {
+  name: getTicketsForStudent
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/rsvps/ticketsForStudent?studentId=2
+  body: none
+  auth: none
+}
+
+params:query {
+  studentId: 2
+}

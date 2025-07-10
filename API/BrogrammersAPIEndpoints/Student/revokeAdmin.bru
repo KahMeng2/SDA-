@@ -1,0 +1,20 @@
+meta {
+  name: revokeAdmin
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{base_url}}/students/revokeAdmin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "clubId": "34",
+    "existingAdminId": "33",
+    "revokedAdminId": "2"
+  }
+  
+}

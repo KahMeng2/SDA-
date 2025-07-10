@@ -1,0 +1,19 @@
+meta {
+  name: updateClub
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{base_url}}/clubs
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": 38,
+    "name": "Fight Club III",
+    "balance": 50.2
+  }
+}

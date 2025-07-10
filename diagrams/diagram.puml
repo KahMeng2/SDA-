@@ -1,0 +1,101 @@
+\@startuml "Domain Model"
+FacultyMember "1" - "0..*" Review : conducts >
+Student "1" - "0..*" Admin : is an >
+Admin "1..*" -- "1" Club : adminstrates >
+User <|- Student : is a
+User <|- FacultyMember : is a
+Event "1" - "1" Venue : hosted at >
+Club "1" - "0..*" FundingApplication : applies for >
+Review "0..*" -- "1" FundingApplication : for >
+FundingApplication . Status
+RSVP "1" -- "1" Event : for >
+Club "1" -- "0..*" Event : hosts >
+Student "1" -- "1..*" RSVP : creates >
+
+'Note: shortcut for preview is Alt + D / option + D
+
+class User {
+    userID
+    email
+    username
+    password 
+    firstname 
+    lastname 
+    preferredName 
+    dob
+    address 
+}
+
+class Review {
+    facultyID
+    applicationID
+}
+
+class Student {
+    studentID
+    course 
+}
+
+class FacultyMember {
+    facultyID
+    role 
+    department 
+}
+
+class Event {
+    eventID
+    title 
+    description 
+    date
+    time
+    cost
+    eventCapacity
+    numRsvps
+}
+
+class Venue {
+    venueID
+    venueCapacity
+    operatingHours 
+    cost 
+    floor
+    room
+    description
+}
+
+class Club {
+    clubID
+    name
+    balance 
+    admins
+}
+
+class FundingApplication {
+    applicationID
+    description
+    amountRequested 
+    Status 
+}
+
+enum Status {
+    InDraft
+    Submitted 
+    InReview 
+    Approved
+    Rejected
+}
+
+class RSVP {
+    date
+    studentID
+    eventID
+    rsvpBy
+}
+
+class Admin {
+    studentID
+    clubID 
+    startDate
+}
+
+@enduml

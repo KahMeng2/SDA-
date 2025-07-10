@@ -1,0 +1,15 @@
+meta {
+  name: getAdminsForClub
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/students/adminsForClub?clubId=34
+  body: none
+  auth: none
+}
+
+params:query {
+  clubId: 34
+}

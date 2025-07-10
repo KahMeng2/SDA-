@@ -1,0 +1,19 @@
+meta {
+  name: updateStudent
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/students
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "studentId": "2",
+    "firstName": "Alace"
+  }
+  
+}

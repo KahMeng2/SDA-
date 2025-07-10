@@ -1,0 +1,33 @@
+meta {
+  name: updateEvent
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{base_url}}/events/executeUpdate?eventId=50
+  body: json
+  auth: inherit
+}
+
+params:query {
+  eventId: 50
+}
+
+body:json {
+    {
+      "name": "Annual Club Meeting",
+      "description": "A meeting to discuss club activities for the upcoming year.",
+      "startTime": "2024-03-14T02:30:00Z",
+      "endTime": "2024-03-14T08:01:00Z",
+      "cost": 25.5,
+      "numTickets": 0,
+      "capacity": 100,
+      "isCancelled": false,
+      "isOnline": true,
+      "venueId": 3,
+      "clubId": 34,
+      "clubName": "Fight Club II",
+      "username": "terryTest2"
+    }
+}

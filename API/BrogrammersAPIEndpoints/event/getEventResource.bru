@@ -1,0 +1,22 @@
+meta {
+  name: getEventResource
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{base_url}}/events/getResource?eventId=31
+  body: json
+  auth: none
+}
+
+params:query {
+  eventId: 31
+}
+
+body:json {
+  {
+    "clubId": 34,
+    "username": "terryTest2"
+  }
+}

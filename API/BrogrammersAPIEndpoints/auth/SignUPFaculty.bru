@@ -1,0 +1,34 @@
+meta {
+  name: SignUPFaculty
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/auth/signup
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "professor.smith1@university.edu",
+    "username": "profsmith1",
+    "password": "password",
+    "firstName": "John",
+    "lastName": "Smith",
+    "middleName": "Michael",
+    "dob": "1975-06-15",
+    "department": "Computer Science",
+    "userType": "FACULTY"
+  }
+}
+
+body:multipart-form {
+  username: alicej
+  password: hashed_password
+}

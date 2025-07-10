@@ -1,0 +1,23 @@
+meta {
+  name: getEventsForVenue
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/events/forVenue?venueId=1&isOnline=true
+  body: json
+  auth: none
+}
+
+params:query {
+  venueId: 1
+  isOnline: true
+}
+
+body:json {
+  {
+    "venueId": "1",
+    "isOnline": "true"
+  }
+}

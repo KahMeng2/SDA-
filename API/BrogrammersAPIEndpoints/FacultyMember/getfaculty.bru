@@ -1,0 +1,27 @@
+meta {
+  name: getfaculty
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/faculty/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "johndoe",
+    "password": "hashed_password"
+  }
+}
+
+body:multipart-form {
+  username: alicej
+  password: hashed_password
+}

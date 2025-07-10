@@ -1,0 +1,21 @@
+meta {
+  name: getRsvpForEvent
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/rsvps/forEvent?eventId=31
+  body: json
+  auth: none
+}
+
+params:query {
+  eventId: 31
+}
+
+body:json {
+  {
+    "eventId": "2"
+  }
+}

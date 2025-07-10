@@ -1,0 +1,18 @@
+meta {
+  name: commitEditApplication
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{base_url}}/funding_application/34/commitEdit
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "description": "Last minute changes.",
+    "amount": "5000.00"
+  }
+}

@@ -1,0 +1,29 @@
+meta {
+  name: createPhysicalVenue(Existing Address)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/physicalvenues
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+    {
+      "description": "Beeg Office",
+      "cost": "1000.2",
+      "venueCapacity": "222",
+      "address": {
+        "id": 1
+      },
+      "floor": "1st Floor",
+      "room": "Room 1"
+    }
+  
+}

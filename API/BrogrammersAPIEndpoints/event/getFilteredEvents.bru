@@ -1,0 +1,25 @@
+meta {
+  name: getFilteredEvents
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{base_url}}/events/filter?isUpcoming=true
+  body: none
+  auth: none
+}
+
+params:query {
+  isUpcoming: true
+}
+
+body:json {
+  {
+    "nameQuery": "",
+    "isUpcoming": false,
+    "isOnline": false,
+    "isCancelled": false
+    // fields can be left out btw, you don't   need to set null
+  }
+}

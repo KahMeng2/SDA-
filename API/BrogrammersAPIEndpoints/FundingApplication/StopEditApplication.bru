@@ -1,0 +1,18 @@
+meta {
+  name: StopEditApplication
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{base_url}}/funding_application/43/stopEdit
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "description": "Last minute changes.",
+    "amount": 5000.00
+  }
+}

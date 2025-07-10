@@ -1,0 +1,28 @@
+meta {
+  name: createEvent
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/events
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "clubId": "37",
+      "isCancelled": "false",
+      "isOnline": "true",
+      "venueId": "3",
+      "name": "Annual Club Meeting",
+      "description": "A meeting to discuss club activities for the upcoming year.",
+      "startTime": "2024-03-14T02:00:00+00:00",
+      "endTime": "2024-03-14T02:31:00:00+00:00",
+      "cost": "25.50",
+      "numTickets": null,
+      "capacity": "100"
+  }
+  
+}

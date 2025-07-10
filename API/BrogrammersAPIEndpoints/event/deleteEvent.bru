@@ -1,0 +1,18 @@
+meta {
+  name: deleteEvent
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{base_url}}/events
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "eventId": "31",
+    "clubID": "34"
+  }
+}

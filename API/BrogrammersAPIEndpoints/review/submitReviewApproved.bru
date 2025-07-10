@@ -1,0 +1,19 @@
+meta {
+  name: submitReviewApproved
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{base_url}}/funding_application/31/submitReview
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "facultyMemberId": "1",
+    "decision": "Approved",
+    "comments": "LGTM"
+  }
+}

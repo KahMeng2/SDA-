@@ -1,0 +1,11 @@
+meta {
+  name: getReviewsForApplication
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/funding_application/32/reviews
+  body: none
+  auth: inherit
+}

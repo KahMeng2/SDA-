@@ -1,0 +1,15 @@
+meta {
+  name: deleteClub
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{base_url}}/clubs
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {"clubId": "43"}
+}

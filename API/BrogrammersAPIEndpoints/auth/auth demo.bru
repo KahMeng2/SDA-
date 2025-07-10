@@ -1,0 +1,19 @@
+meta {
+  name: auth demo
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{base_url}}/auth/token
+  body: none
+  auth: bearer
+}
+
+headers {
+  Refresh-Token: QO5-vrQygS2a5G0MwcS3Tq0Le0DSJlSblVoh2ujA4iA
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJCcm9ncmFtbWVyQnJpZ2FkZSIsInN1YiI6Im5ld1VzZXIiLCJpYXQiOjE3MjYyMTgzODcsImV4cCI6MTcyNjIxOTI4NywiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVFVERU5UIl0sInVzZXJJZCI6NCwidXNlclJvbGUiOiJTVFVERU5UIn0.N9Es5BEKnl9vZQHa1_LnJ1dCpAH5fpjkH6PORM4VSG4
+}

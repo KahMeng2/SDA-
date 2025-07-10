@@ -1,0 +1,18 @@
+meta {
+  name: submitReviewRejected
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{base_url}}/funding_application/32/submitReview
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "decision": "Rejected",
+    "comments": "Budget is unclear and needs to be revised."
+  }
+}

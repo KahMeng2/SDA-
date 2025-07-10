@@ -1,0 +1,18 @@
+meta {
+  name: deleteRsvp
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{base_url}}/rsvps
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "rsvpStudentId": "31",
+    "eventId": "2"
+  }
+}

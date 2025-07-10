@@ -1,0 +1,22 @@
+meta {
+  name: releaseEventResource
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{base_url}}/events/releaseResource?eventId=31
+  body: json
+  auth: none
+}
+
+params:query {
+  eventId: 31
+}
+
+body:json {
+  {
+    "clubId": 34,
+    "username": "terryTest2"
+  }
+}

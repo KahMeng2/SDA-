@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "BrogrammersAPIEndpoints",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

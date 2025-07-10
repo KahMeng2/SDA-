@@ -1,0 +1,15 @@
+meta {
+  name: getRsvpForStudent
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/rsvps/forStudent?rsvpStudentId=31
+  body: json
+  auth: inherit
+}
+
+params:query {
+  rsvpStudentId: 31
+}

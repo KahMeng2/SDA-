@@ -1,0 +1,35 @@
+meta {
+  name: createPhysicalVenue(new Address)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/physicalvenues
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+    {
+      "description": "Beeg Office",
+      "cost": "1000",
+      "venueCapacity": "222",
+      "address": {
+        // can also put "id": null
+        "addressLine1": "25 Harry Street",
+        "addressLine2": null,
+        "city": "Doncaster",
+        "state": "Vic",
+        "country": "Aus",
+        "postcode": "3019"
+      },
+      "floor": "1st Floor",
+      "room": "Room 1"
+    }
+  
+}

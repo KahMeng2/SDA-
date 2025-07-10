@@ -1,0 +1,17 @@
+meta {
+  name: stopReview
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/funding_application/32/cancelReview
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "facultyMemberId": "1"
+  }
+}

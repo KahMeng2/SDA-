@@ -1,6 +1,4 @@
 ﻿# BrogrammerBrigade
-RENDER LINK:
-https://brogrammerbrigade-frontend.onrender.com/
 
 ## Our users
 
